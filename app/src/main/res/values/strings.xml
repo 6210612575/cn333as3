@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">NumberGuessingGame</string>
+    <string name="hint">Please enter your guess</string>
+    <string name="done"> CHECK</string>
+    <string name="number">Please enter your guess</string>
+
+</resources>
