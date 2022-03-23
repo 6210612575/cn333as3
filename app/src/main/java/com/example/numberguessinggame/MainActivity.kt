@@ -3,15 +3,11 @@ package com.example.numberguessinggame
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Button
-import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Clear
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -20,9 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import java.util.*
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import kotlin.random.Random.Default.nextInt
 
@@ -58,7 +54,6 @@ fun game() {
         }
         else {
             try {
-                number.toInt()
                 when {
                     number == random -> {
                         check.value = true
@@ -88,25 +83,25 @@ fun game() {
     }
 
     val reset = {
-        random = Random().nextInt(1000).toString()
+        random = nextInt(1000).toString()
         count = 0
-        x.value = "Try to guess the number \n From 1 - 1000 \n"
+        x.value = "Try to guess the number \n From 1 - 1000 \n\n"
         number = ""
         check.value = false
     }
 
     Column(
         modifier = Modifier.fillMaxHeight().padding(30.dp),
-//        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "${x.value} ",
+            text = "${x.value}",
             fontSize = 18.sp,
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .padding(32.dp)
                 .fillMaxWidth()
+
         )
         TextField(
             value = Input.value,
@@ -125,7 +120,8 @@ fun game() {
                 .padding(32.dp),
             singleLine = true,
             keyboardOptions = KeyboardOptions(
-                capitalization = KeyboardCapitalization.Words
+                keyboardType = KeyboardType.Number,
+                capitalization = KeyboardCapitalization.Words,
             )
         )
 
