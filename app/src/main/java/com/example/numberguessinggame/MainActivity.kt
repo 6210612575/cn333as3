@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import java.util.*
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import kotlin.random.Random.Default.nextInt
 
@@ -127,7 +128,8 @@ fun game() {
                 .padding(32.dp),
             singleLine = true,
             keyboardOptions = KeyboardOptions(
-                capitalization = KeyboardCapitalization.Words
+                capitalization = KeyboardCapitalization.Words,
+                keyboardType = KeyboardType.Number
             )
         )
 
